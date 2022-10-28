@@ -50,4 +50,18 @@ dependencies {
     // VK Api old
     implementation 'com.vk:android-sdk-core:3.5.2'
     implementation 'com.vk:android-sdk-api:3.5.2'
+
+    //RxJava 2
+    implementation "io.reactivex.rxjava2:rxjava:2.2.18"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:2.2.0"
+
+    // Облегченная библиотека, содержит только карту, слой пробок,
+    // LocationManager, UserLocationLayer и возможность скачивать офлайн-карты (только в платной версии).
+//    implementation 'com.yandex.android:maps.mobile:4.2.2-lite'
+
+    // Полная библиотека в дополнение к lite версии предоставляет автомобильную маршрутизацию,
+    // веломаршрутизацию, пешеходную маршрутизацию и маршрутизацию на общественном транспорте,
+    // поиск, suggest, геокодирование и отображение панорам.
+     implementation 'com.yandex.android:maps.mobile:4.2.2-full'
 }

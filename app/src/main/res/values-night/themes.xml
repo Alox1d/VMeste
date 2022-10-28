@@ -1,7 +1,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.VMeste" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.VMeste" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/my_light_primary</item>
+        <item name="colorPrimaryContainer">@color/my_light_primary</item>
+        <item name="colorSecondary">@color/my_light_primary</item>
+        <item name="colorAccent">@color/my_light_primary</item>
+        <item name="colorPrimaryDark">@color/my_light_primary</item>
+        <item name="colorPrimaryVariant">@color/my_light_primary</item>
+        <item name="colorSecondaryVariant">@color/my_light_primary</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+    </style>
+
+    <style name="Theme.VMeste" parent="Base.Theme.VMeste">
+        <!-- Customize your light theme here. -->
+
     </style>
 </resources>

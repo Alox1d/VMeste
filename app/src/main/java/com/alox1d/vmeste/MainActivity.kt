@@ -12,7 +12,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.navigation.ui.setupWithNavController
 import com.alox1d.vmeste.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vk.api.sdk.VK
 import com.vk.api.sdk.auth.VKAccessToken
 import com.vk.api.sdk.auth.VKAuthCallback
@@ -32,10 +34,23 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.toolbar)
 
+        val navView: BottomNavigationView = binding.theContent.navView
+
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_dashboard
+            )
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+
+        if (!VK.isLoggedIn())
         VK.login(this, arrayListOf(VKScope.FRIENDS))
-
 
 
 
@@ -53,9 +68,7 @@ class MainActivity : AppCompatActivity() {
                 // User passed authorization
                 Log.i(TAG, "onLogin: success")
 
-                val navController = findNavController(R.id.nav_host_fragment_content_main)
-                appBarConfiguration = AppBarConfiguration(navController.graph)
-                setupActionBarWithNavController(navController, appBarConfiguration)
+
 
             }
 
