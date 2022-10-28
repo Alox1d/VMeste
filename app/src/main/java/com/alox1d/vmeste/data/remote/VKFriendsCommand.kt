@@ -23,7 +23,7 @@ class VKFriendsCommand() : ApiCommand<List<FriendModel>>() {
     private fun getFriends(manager: VKApiManager): List<FriendModel> {
         val uploadInfoCall = VKMethodCall.Builder()
             .method("friends.get")
-            .args("fields", "city")
+            .args("fields", "city,country")
             .version(manager.config.version)
             .build()
         return manager.execute(uploadInfoCall, ServerParser())
@@ -37,9 +37,12 @@ class VKFriendsCommand() : ApiCommand<List<FriendModel>>() {
                 for (userIndex in 0 until joResponse.length()){
                     val parsed = joResponse.getJSONObject(userIndex)
                     try {
-                    val user = FriendModel(name = parsed.getString("first_name") + " " + parsed.getString("last_name"),
-                    city = parsed.getJSONObject("city").getString("title"))
-                    list.add(user)
+                        val user = FriendModel(
+                            name = parsed.getString("first_name") + " " + parsed.getString("last_name"),
+                            city = parsed.getJSONObject("city").getString("title"),
+                            country = parsed.getJSONObject("country").getString("title")
+                        )
+                        list.add(user)
                     } catch (ex: JSONException) {
                         Unit
                     }
